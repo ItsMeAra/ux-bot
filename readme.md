@@ -1,4 +1,4 @@
-# [UX-Bot] - Responding to hashtags one gif at a time
+# UX-Bot - Responding to hashtags one gif at a time
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
