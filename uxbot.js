@@ -204,6 +204,15 @@ controller.hears(['#casinonight'],'direct_message,direct_mention,mention,message
 
 
 
+// #coffee, #whoops
+controller.hears(['#coffee', '#whoops'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'http://i.giphy.com/tId80dcdksC8U.gif');
+
+});
+
+
+
 // #devbox, #devboxes
 controller.hears(['#devbox','#devboxes'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
@@ -336,15 +345,6 @@ controller.hears(['#stabbed'],'direct_message,direct_mention,mention,message_rec
     bot.reply(message,'http://i.imgur.com/ey5hIyJ.gif');
 
 });
-
-
-
-// #stress
-// controller.hears(['#stress'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-//
-//     bot.reply(message,'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg');
-//
-// });
 
 
 
