@@ -19,18 +19,38 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Botkit designed to ease the process of designing and running useful, creative or
-just plain weird bots (and other types of applications) that live inside [Slack](http://slack.com)!
+## Adding a new call & response
 
-It provides a semantic interface to sending and receiving messages
-so that developers can focus on creating novel applications and experiences
-instead of dealing with API endpoints.
+It's easy to create a new call & response - simply replace the KEYWORD and the RESPONSE in the code below. You'll need to restart node to access the new call & response.
 
-Botkit features a comprehensive set of tools
-to deal with [Slack's integration platform](http://api.slack.com), and allows
-developers to build both custom integrations for their
-team, as well as public "Slack Button" applications that can be
-run from a central location, and be used by many teams at the same time.
+```javascript
+
+// KEYWORD
+controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'RESPONSE');
+
+});
+
+```
+
+Please try and keep uxbot.js organized by adding new keywords in alphabetical order.
+
+
+
+## Expanded usage
+
+You can do pretty much anything with [BotKit](http://howdy.ai/botkit/). Feel free to expand on it in any way you want.
+
+
+
+
+
+
+
+
+
+
 
 ## Installation
 
@@ -626,7 +646,7 @@ askSize = function(response, convo) {
     convo.next();
   });
 }
-askWhereDeliver = function(response, convo) { 
+askWhereDeliver = function(response, convo) {
   convo.ask("So where do you want it delivered?", function(response, convo) {
     convo.say("Ok! Good by.");
     convo.next();
@@ -1010,7 +1030,7 @@ where you may want a more sophisticated logging solution. You can write your
 own logging module that uses a third-party tool, like
 [winston](https://github.com/winstonjs/winston) or
 [Bristol](https://github.com/TomFrost/Bristol). Just create an object with a
-`log` method. That method should take a severity level (such as `'error'` or 
+`log` method. That method should take a severity level (such as `'error'` or
 `'debug'`) as its first argument, and then any number of other arguments that
 will be logged as messages. (Both Winston and Bristol create objects of this
 description; it's a common interface.)
