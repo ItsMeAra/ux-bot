@@ -280,6 +280,22 @@ controller.hears(['#moneyback'],'direct_message,direct_mention,mention,message_r
 
 
 
+// #pandemonium
+controller.hears(['#pandemonium'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var responses = Array(
+        'http://pop.h-cdn.co/assets/15/21/1431967859-madmax-guitar.gif',
+        'http://i.imgur.com/6WFjtDB.gif%20alt='
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
+
+});
+
+
+
 // #ravenous
 controller.hears(['#ravenous'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
@@ -343,10 +359,75 @@ controller.hears(['#stabbed'],'direct_message,direct_mention,mention,message_rec
 
 
 
-// #struggleplatez
-controller.hears(['#struggleplatez'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+// #stress
+controller.hears(['#stress'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
-    bot.reply(message,'http://i.imgur.com/sW7QxJx.jpg');
+    var responses = Array(
+        'http://union.io/images/repo/20160204-00--b17773.png',
+        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg'
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
+
+});
+
+
+
+// #strugglelunch
+controller.hears(['#strugglelunch'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var responses = Array(
+        'The Point',
+        'Signature Cafe',
+        'An apple from the basket in the kitchen',
+        'Chipotle (RIP)',
+        'A swig of Coffee Mate',
+        'Xenomorph Grill',
+        'Bowl of Fruity Pebbles',
+        'Cap’n Crunch',
+        'That weird fish thing from the Point\'s Facebook page',
+        'https://files.slack.com/files-tmb/T02BHKTRC-F0K6DL1JQ-c87324613e/img_6627_1024.jpg'
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
+
+});
+
+
+
+// #struggleplate
+controller.hears(['#struggleplate'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var responses = Array(
+        'https://scontent.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/11012491_1074533075909459_1097248340093578678_n.jpg?oh=14b780b4795d75b0d84c908aca02e12c&oe=5707482F',
+        'https://scontent.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11011522_1077599628936137_2509595278427732007_n.jpg?oh=30b03e6f8ac1925a89435ac560354692&oe=573F3DF0',
+        'https://scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/604107_615157078513730_221830912_n.jpg?oh=41dc2d7ed461c51c33637097b97b53c6&oe=5736B0A2',
+        'https://files.slack.com/files-tmb/T02BHKTRC-F0K6DL1JQ-c87324613e/img_6627_1024.jpg',
+        'http://i.imgur.com/tdUNOYj.jpg',
+        'http://i.imgur.com/RnvbRg3.jpg',
+        'http://i.imgur.com/5RbGmJb.jpg',
+        'http://i.imgur.com/cshWr5P.jpg',
+        'http://i.imgur.com/SVjJiO1.jpg',
+        'http://i.imgur.com/rGh7S0p.jpg',
+        'http://i.imgur.com/bRglqp4.jpg',
+        'http://i.imgur.com/wAEH2nA.jpg',
+        'http://i.imgur.com/sW7QxJx.jpg',
+        'https://files.slack.com/files-pri/T02BHKTRC-F0KHZHQRX/img_2118.jpg',
+        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg',
+        'https://41.media.tumblr.com/tumblr_mdwklaGa521rle9pfo1_500.jpg',
+        'https://36.media.tumblr.com/43f16eec0221724e2d82149273b20c7c/tumblr_mn4mdggUYe1qc7fcbo1_1280.jpg',
+        'https://scontent.xx.fbcdn.net/hphotos-xaf1/t31.0-8/466582_434010223295084_1939809895_o.jpg',
+        'https://scontent.xx.fbcdn.net/hphotos-xfa1/t31.0-8/471181_411296902233083_740881165_o.jpg',
+        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg'
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
 
 });
 
@@ -376,4 +457,5 @@ controller.hears(['#tripleboost'],'direct_message,direct_mention,mention,message
     bot.reply(message,'http://i.imgur.com/IC1Ad7g.gif');
 
 });
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
