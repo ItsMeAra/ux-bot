@@ -167,16 +167,6 @@ function formatUptime(uptime) {
 
 
 
-
-controller.hears(['westside'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-
-    bot.reply(message,'http://ara-vision.com/gif-library/seinfeld/kramer-eat-in-bed.gif');
-
-});
-
-
-
-
 // #araonsabbatical
 controller.hears(['#araonsabbatical'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
