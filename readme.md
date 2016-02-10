@@ -69,6 +69,19 @@ controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_rece
 
 ```
 
+You can also have multiple keywords call the same response.
+
+```javascript
+
+// KEYWORD
+controller.hears(['KEYWORD1','KEYWORD2','KEYWORD3'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'RESPONSE');
+
+});
+
+```
+
 Please try and keep uxbot.js organized by adding new keywords in alphabetical order.
 
 
