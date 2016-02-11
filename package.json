@@ -9,7 +9,6 @@
     "jfs": "^0.2.6",
     "mustache": "^2.2.1",
     "request": "^2.67.0",
-    "requestify": "^0.1.17",
     "ws": "^1.0.0"
   },
   "devDependencies": {

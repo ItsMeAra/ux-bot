@@ -35,6 +35,7 @@
 
 /* Start UX-Bot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+//Set your botToken
 var botToken = 'xoxb-17803994887-uunDoWIhwJ7tMSYpinZ4yL8P';
 
 if (!botToken) {
@@ -42,25 +43,20 @@ if (!botToken) {
     process.exit(1);
 }
 
+//Include your libraries
 var Botkit = require('./lib/Botkit.js');
 var os = require('os');
-
-
-
-
-
+// Allow jQuery
+var $ = require('jquery');
+// Allow XMLHttpRequest
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-
-
-
-
-
-
+//Show Debugging info in CLI?
 var controller = Botkit.slackbot({
     debug: true,
 });
 
+//Start your bot
 var bot = controller.spawn({
     token: botToken
 }).startRTM();
@@ -292,6 +288,15 @@ controller.hears(['#moneyback'],'direct_message,direct_mention,mention,message_r
 
 
 
+// #obamajam
+controller.hears(['#obamajam'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,':car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car: :car: :bus: :truck: :bus: :car:');
+
+});
+
+
+
 // #pandemonium
 controller.hears(['#pandemonium'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
@@ -472,34 +477,40 @@ controller.hears(['#tripleboost'],'direct_message,direct_mention,mention,message
 
 
 
-controller.hears(['#commute (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
-    var inputAddress = message.text.match(/#commute (.*)/i);
-    var rawAddress = inputAddress[1];
-    var encodedAddress = encodeURIComponent(inputAddress[1]);
+    var mtAddress = '8520+National+Blvd+90232';
+    var inputAddress = message.text.match(/#drivetime (.*)/i);
+    var destinationAddress = inputAddress[1];
+    var encodedDestinationAddress = encodeURIComponent(destinationAddress);
 
     var timeNow = Math.floor(Date.now()) + 100;
 
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time='+ timeNow +'&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
+
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://maps.googleapis.com/maps/api/directions/json?departure_time='+ timeNow +'&origin=8520+National+Blvd+90232&destination='+ encodedAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY', true);
+    request.open('GET', apiUrl, true);
 
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             // Success!
             var data = JSON.parse(request.responseText);
 
-            bot.reply(message,'Commute time to ' + rawAddress + ': ');
-            bot.reply(message,'Coming soon to a bot near you');
-            bot.reply(message,data);
+            var driveTime = 'Drivetime to ' + destinationAddress + ' is ***COMING TO A BOT NEAR YOU*** <'+googleMapsUrl+'>';
+
+            bot.reply(message,':car: :bus: :truck: :bus: :car:');
+            bot.reply(message,driveTime);
+            bot.reply(message,':truck: :bus: :car: :bus: :truck:');
         }
         else {
         // We reached our target server, but it returned an error
-            bot.reply(message,'Commute time to ' + rawAddress + ' is currently unknown due to an API error.');
+            bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
         }
     };
 
     request.onerror = function() {
-        bot.reply(message,'Commute time to ' + rawAddress + ' is currently unknown due to an API error.');
+        bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
     };
 
     request.send();
