@@ -476,7 +476,10 @@ controller.hears(['#tripleboost'],'direct_message,direct_mention,mention,message
 });
 
 
+/* More Complicated Shit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+// #drivetime
 controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
     var mtAddress = '8520+National+Blvd+90232';
@@ -486,7 +489,7 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
 
     var timeNow = Math.floor(Date.now()) + 100;
 
-    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time='+ timeNow +'&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffice_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
     var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
 
     var request = new XMLHttpRequest();
@@ -497,11 +500,39 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
             // Success!
             var data = JSON.parse(request.responseText);
 
-            var driveTime = 'Drivetime to ' + destinationAddress + ' is ***COMING TO A BOT NEAR YOU*** <'+googleMapsUrl+'>';
+            if(data.routes[0]){
+                if(data.routes[0].legs[0].duration_in_traffic){
+                    var driveTime = data.routes[0].legs[0].duration_in_traffic.text;
+                }
+                else {
+                    if(data.routes[0].legs[0].duration){
+                        var driveTime = data.routes[0].legs[0].duration.text +'. Traffic is not included in this route.';
+                    }
+                    else {
+                        var driveTime = 'not available. Please try another query.';
+                    }
+                }
+            }
+            else {
+                var driveTime = 'not available. Please try another more specific query.';
+            }
 
-            bot.reply(message,':car: :bus: :truck: :bus: :car:');
-            bot.reply(message,driveTime);
-            bot.reply(message,':truck: :bus: :car: :bus: :truck:');
+
+            var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime;
+            // var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime +' <'+googleMapsUrl+'>';
+
+            bot.reply(message,{
+                "attachments": [
+                    {
+                        "fallback": driveTimeOutput,
+                        "pretext": driveTimeOutput,
+                        "title": "See it on the map",
+                        "title_link": googleMapsUrl,
+                        "text": ":car: :bus: :truck: :bus: :car:",
+                        "color": "#2956B2"
+                    }
+                ]
+            });
         }
         else {
         // We reached our target server, but it returned an error
@@ -516,5 +547,3 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
     request.send();
 
 });
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
