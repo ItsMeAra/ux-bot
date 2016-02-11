@@ -109,6 +109,7 @@ Responds to our various #'s
 ```bash
 #grim
 #stabbed
+etc.
 ```
 
 Tells you your commute time
