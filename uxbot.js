@@ -45,6 +45,18 @@ if (!botToken) {
 var Botkit = require('./lib/Botkit.js');
 var os = require('os');
 
+
+
+
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+
+
+
+
+
+
 var controller = Botkit.slackbot({
     debug: true,
 });
@@ -455,6 +467,42 @@ controller.hears(['#trashthelogo'],'direct_message,direct_mention,mention,messag
 controller.hears(['#tripleboost'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
     bot.reply(message,'http://i.imgur.com/IC1Ad7g.gif');
+
+});
+
+
+
+controller.hears(['#commute (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var inputAddress = message.text.match(/#commute (.*)/i);
+    var rawAddress = inputAddress[1];
+    var encodedAddress = encodeURIComponent(inputAddress[1]);
+
+    var timeNow = Math.floor(Date.now()) + 100;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://maps.googleapis.com/maps/api/directions/json?departure_time='+ timeNow +'&origin=8520+National+Blvd+90232&destination='+ encodedAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY', true);
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            // Success!
+            var data = JSON.parse(request.responseText);
+
+            bot.reply(message,'Commute time to ' + rawAddress + ': ');
+            bot.reply(message,'Coming soon to a bot near you');
+            bot.reply(message,data);
+        }
+        else {
+        // We reached our target server, but it returned an error
+            bot.reply(message,'Commute time to ' + rawAddress + ' is currently unknown due to an API error.');
+        }
+    };
+
+    request.onerror = function() {
+        bot.reply(message,'Commute time to ' + rawAddress + ' is currently unknown due to an API error.');
+    };
+
+    request.send();
 
 });
 
