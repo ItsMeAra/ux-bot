@@ -101,3 +101,18 @@ You'll need to invite your new bot into any channel you want it to be available 
 ```bash
 /invite @<my bot>
 ```
+
+## What does UX-Bot do?
+
+Responds to our various #'s
+
+```bash
+#grim
+#stabbed
+```
+
+Tells you your commute time
+
+```bash
+#drivetime {address}
+```
