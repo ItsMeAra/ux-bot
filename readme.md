@@ -44,10 +44,18 @@ npm install --production
 
 ## Running UX-Bot
 
-UX-Bot runs in Node. Our Auth-token is built into uxbot.js, so you don't need to pass anything while starting it up.
+UX-Bot runs in Node. Our Auth-token is built into uxbot.js, so you don't need to pass anything while starting it up. 
+
+There are two ways to run UX-Bot. The standard way, which requires a restart to incorporate any code changes:
 
 ```bash
 node uxbot.js
+```
+
+And the enhanced way, which automatically detects changes to uxbot.js and restarts Node with every change:
+
+```bash
+nodemon uxbot.js
 ```
 
 The current production UX-Bot lives on EK's machine. The goal is to move it to the UX office Mac Mini, or a web-facing server, so it can always run, even when EK's computer is off.
