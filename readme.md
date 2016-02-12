@@ -82,8 +82,30 @@ controller.hears(['KEYWORD1','KEYWORD2','KEYWORD3'],'direct_message,direct_menti
 
 ```
 
-Please try and keep uxbot.js organized by adding new keywords in alphabetical order.
+Want to pull a random response from a list? Cool. You can.
 
+```javascript
+
+// #keyword
+controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var responses = Array(
+        'RANDOM-RESPONSE-A',
+        'RANDOM-RESPONSE-B',
+        'RANDOM-RESPONSE-C',
+        'RANDOM-RESPONSE-D',
+        'RANDOM-RESPONSE-E'
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
+
+});
+
+```
+
+Please try and keep uxbot.js organized by adding new keywords in alphabetical order.
 
 
 ## Expanded usage
