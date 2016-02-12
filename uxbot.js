@@ -471,6 +471,15 @@ controller.hears(['#tigerwoods'],'direct_message,direct_mention,mention,message_
 
 
 
+// #topperformer
+controller.hears(['#topperformer'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg');
+
+});
+
+
+
 // #trashthelogo
 controller.hears(['#trashthelogo'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
