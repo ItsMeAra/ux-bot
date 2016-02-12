@@ -49,7 +49,7 @@ var os = require('os');
 // Allow jQuery
 var $ = require('jquery');
 // Allow XMLHttpRequest
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 //Show Debugging info in CLI?
 var controller = Botkit.slackbot({
@@ -177,7 +177,19 @@ function formatUptime(uptime) {
 
 
 
-/* (mt) custom responses
+
+
+
+
+
+
+
+
+
+
+
+
+/* Basic (mt) custom responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 // #araonsabbatical
@@ -487,9 +499,7 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
     var destinationAddress = inputAddress[1];
     var encodedDestinationAddress = encodeURIComponent(destinationAddress);
 
-    var timeNow = Math.floor(Date.now()) + 100;
-
-    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffice_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
     var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
 
     var request = new XMLHttpRequest();
@@ -522,31 +532,32 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
             // var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime +' <'+googleMapsUrl+'>';
 
             bot.reply(message,{
-                "attachments": [
+                'attachments': [
                     {
-                        "fallback": driveTimeOutput,
-                        "pretext": driveTimeOutput,
-                        "title": "See it on the map",
-                        "title_link": googleMapsUrl,
-                        "text": ":car: :bus: :truck: :bus: :car:",
-                        "color": "#2956B2"
+                        'fallback': driveTimeOutput,
+                        'pretext': driveTimeOutput,
+                        'title': 'See it on the map',
+                        'title_link': googleMapsUrl,
+                        'text': ':car: :bus: :truck: :bus: :car:',
+                        'color': '#2956B2'
                     }
                 ]
             });
         }
         else {
         // We reached our target server, but it returned an error
-            bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+            bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
         }
     };
 
     request.onerror = function() {
-        bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+        bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
     };
 
     request.send();
 
 });
+
 
 
 // #walktime
@@ -571,17 +582,14 @@ controller.hears(['#walktime (.*)'],'direct_message,direct_mention,mention,messa
             var data = JSON.parse(request.responseText);
 
             if(data.routes[0]){
-                if(data.routes[0].legs[0].duration_in_traffic){
-                    var driveTime = data.routes[0].legs[0].duration_in_traffic.text;
+
+                if(data.routes[0].legs[0].duration){
+                    var driveTime = data.routes[0].legs[0].duration.text +'.';
                 }
                 else {
-                    if(data.routes[0].legs[0].duration){
-                        var driveTime = data.routes[0].legs[0].duration.text +'.';
-                    }
-                    else {
-                        var driveTime = 'not available. Please try another query.';
-                    }
+                    var driveTime = 'not available. Please try another query.';
                 }
+
             }
             else {
                 var driveTime = 'not available. Please try another more specific query.';
@@ -592,26 +600,94 @@ controller.hears(['#walktime (.*)'],'direct_message,direct_mention,mention,messa
             // var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime +' <'+googleMapsUrl+'>';
 
             bot.reply(message,{
-                "attachments": [
+                'attachments': [
                     {
-                        "fallback": driveTimeOutput,
-                        "pretext": driveTimeOutput,
-                        "title": "See it on the map",
-                        "title_link": googleMapsUrl,
-                        "text": ":walking: :walking: :walking: :walking: :walking:",
-                        "color": "#2956B2"
+                        'fallback': driveTimeOutput,
+                        'pretext': driveTimeOutput,
+                        'title': 'See it on the map',
+                        'title_link': googleMapsUrl,
+                        'text': ':walking: :walking::skin-tone-2: :walking::skin-tone-3: :walking::skin-tone-4: :walking::skin-tone-5:',
+                        'color': '#2956B2'
                     }
                 ]
             });
         }
         else {
         // We reached our target server, but it returned an error
-            bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+            bot.reply(message,'Walktime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
         }
     };
 
     request.onerror = function() {
-        bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+        bot.reply(message,'Walktime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
+    };
+
+    request.send();
+
+});
+
+
+
+// #biketime
+controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var mtAddress = '8520+National+Blvd+90232';
+    var inputAddress = message.text.match(/#biketime (.*)/i);
+    var destinationAddress = inputAddress[1];
+    var encodedDestinationAddress = encodeURIComponent(destinationAddress);
+
+    var timeNow = Math.floor(Date.now()) + 100;
+
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&mode=bicycling&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', apiUrl, true);
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            // Success!
+            var data = JSON.parse(request.responseText);
+
+            if(data.routes[0]){
+
+                if(data.routes[0].legs[0].duration){
+                    var driveTime = data.routes[0].legs[0].duration.text +'.';
+                }
+                else {
+                    var driveTime = 'not available. Please try another query.';
+                }
+
+            }
+            else {
+                var driveTime = 'not available. Please try another more specific query.';
+            }
+
+
+            var driveTimeOutput = 'Biketime to ' + destinationAddress + ' is '+ driveTime;
+            // var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime +' <'+googleMapsUrl+'>';
+
+            bot.reply(message,{
+                'attachments': [
+                    {
+                        'fallback': driveTimeOutput,
+                        'pretext': driveTimeOutput,
+                        'title': 'See it on the map',
+                        'title_link': googleMapsUrl,
+                        'text': ':bicyclist: :bicyclist::skin-tone-2: :bicyclist::skin-tone-3: :bicyclist::skin-tone-4: :bicyclist::skin-tone-5:',
+                        'color': '#2956B2'
+                    }
+                ]
+            });
+        }
+        else {
+        // We reached our target server, but it returned an error
+            bot.reply(message,'Biketime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
+        }
+    };
+
+    request.onerror = function() {
+        bot.reply(message,'Biketime to ' + destinationAddress + ' is currently unknown due to an API error. Hopefully you can see it on Google Maps: '+googleMapsUrl);
     };
 
     request.send();
