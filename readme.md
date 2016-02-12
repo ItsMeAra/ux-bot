@@ -139,4 +139,5 @@ Tells you your commute time
 ```bash
 #drivetime {address}
 #walktime {address}
+#biketime {address}
 ```
