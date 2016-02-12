@@ -514,6 +514,7 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
     var encodedDestinationAddress = encodeURIComponent(destinationAddress);
 
     var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    // var apiUrlPessimistic = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
     var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
 
     var request = new XMLHttpRequest();
@@ -538,7 +539,7 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
                 }
             }
             else {
-                var driveTime = 'not available. Please try another more specific query.';
+                var driveTime = 'not available. Please try another more specific query - or a location that\'s not overseas.';
             }
 
 
