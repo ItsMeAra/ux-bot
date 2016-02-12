@@ -460,7 +460,12 @@ controller.hears(['#struggleplate'],'direct_message,direct_mention,mention,messa
 
 });
 
+// #tgif
+controller.hears(['#tgif'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
+    bot.reply(message,'http://38.media.tumblr.com/64a41920bf57be7bfba92b508df983a2/tumblr_mhm9yobHrw1qgig4oo1_1280.gif');
+
+});
 
 // #tigerwoods
 controller.hears(['#tigerwoods'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
