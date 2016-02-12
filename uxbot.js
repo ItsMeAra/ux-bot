@@ -547,3 +547,73 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
     request.send();
 
 });
+
+
+// #walktime
+controller.hears(['#walktime (.*)'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    var mtAddress = '8520+National+Blvd+90232';
+    var inputAddress = message.text.match(/#walktime (.*)/i);
+    var destinationAddress = inputAddress[1];
+    var encodedDestinationAddress = encodeURIComponent(destinationAddress);
+
+    var timeNow = Math.floor(Date.now()) + 100;
+
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&mode=walking&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', apiUrl, true);
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            // Success!
+            var data = JSON.parse(request.responseText);
+
+            if(data.routes[0]){
+                if(data.routes[0].legs[0].duration_in_traffic){
+                    var driveTime = data.routes[0].legs[0].duration_in_traffic.text;
+                }
+                else {
+                    if(data.routes[0].legs[0].duration){
+                        var driveTime = data.routes[0].legs[0].duration.text +'.';
+                    }
+                    else {
+                        var driveTime = 'not available. Please try another query.';
+                    }
+                }
+            }
+            else {
+                var driveTime = 'not available. Please try another more specific query.';
+            }
+
+
+            var driveTimeOutput = 'Walktime to ' + destinationAddress + ' is '+ driveTime;
+            // var driveTimeOutput = 'Drivetime to ' + destinationAddress + ' is '+ driveTime +' <'+googleMapsUrl+'>';
+
+            bot.reply(message,{
+                "attachments": [
+                    {
+                        "fallback": driveTimeOutput,
+                        "pretext": driveTimeOutput,
+                        "title": "See it on the map",
+                        "title_link": googleMapsUrl,
+                        "text": ":walking: :walking: :walking: :walking: :walking:",
+                        "color": "#2956B2"
+                    }
+                ]
+            });
+        }
+        else {
+        // We reached our target server, but it returned an error
+            bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+        }
+    };
+
+    request.onerror = function() {
+        bot.reply(message,'Drivetime to ' + destinationAddress + ' is currently unknown due to an API error. View your drivetime on Google Maps instead.');
+    };
+
+    request.send();
+
+});
