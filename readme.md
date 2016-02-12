@@ -86,7 +86,7 @@ Want to pull a random response from a list? Cool. You can.
 
 ```javascript
 
-// #keyword
+// KEYWORD
 controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
     var responses = Array(
