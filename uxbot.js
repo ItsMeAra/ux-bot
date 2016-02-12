@@ -460,6 +460,17 @@ controller.hears(['#struggleplate'],'direct_message,direct_mention,mention,messa
 
 });
 
+
+
+// #strugglemvp
+controller.hears(['#strugglemvp'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'https://scontent.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/11012491_1074533075909459_1097248340093578678_n.jpg?oh=14b780b4795d75b0d84c908aca02e12c&oe=5707482F');
+
+});
+
+
+
 // #tgif
 controller.hears(['#tgif'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
