@@ -460,7 +460,10 @@ controller.hears(['#struggleplate'],'direct_message,direct_mention,mention,messa
         'https://36.media.tumblr.com/43f16eec0221724e2d82149273b20c7c/tumblr_mn4mdggUYe1qc7fcbo1_1280.jpg',
         'https://scontent.xx.fbcdn.net/hphotos-xaf1/t31.0-8/466582_434010223295084_1939809895_o.jpg',
         'https://scontent.xx.fbcdn.net/hphotos-xfa1/t31.0-8/471181_411296902233083_740881165_o.jpg',
-        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg'
+        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg',
+        'https://scontent.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/12190794_1160788300617269_5858725134886156556_n.jpg?oh=fbb7f97a640975a3c3c449f38c733fe8&oe=5731F813',
+        'https://scontent.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/12144707_1151539811542118_4126216404777350078_n.jpg?oh=fb913f2b510e06e2a5efead6d4654a5c&oe=572486C9',
+        'https://scontent.xx.fbcdn.net/hphotos-xft1/v/t1.0-9/11206104_1113210295375070_8208117772588246922_n.jpg?oh=1b42b866a3ffce4208932fefc5cb27dd&oe=57706470'
     );
 
     var botResponse = responses[Math.floor(Math.random()*responses.length)];
@@ -499,7 +502,14 @@ controller.hears(['#tigerwoods'],'direct_message,direct_mention,mention,message_
 // #topperformer
 controller.hears(['#topperformer'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
-    bot.reply(message,'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg');
+    var responses = Array(
+        'http://union.io/images/repo/20150917-00--a1bd5f.jpg',
+        'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg'
+    );
+
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+
+    bot.reply(message, botResponse);
 
 });
 
@@ -730,6 +740,7 @@ controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,messa
 });
 
 controller.hears(['#bothelp', '#bothelp-long'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    // TODO: Add help to each keyword
     var feed = '';
     var botResponse = bot.botkit.allKeywords;
     var _response = '```';
