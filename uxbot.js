@@ -219,6 +219,15 @@ controller.hears(['#casinonight'],'direct_message,direct_mention,mention,message
 
 
 
+// #chromeriver
+controller.hears(['#chromeriver'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'https://49.media.tumblr.com/69b9ccbd01d405070c04fa0c01e7a94f/tumblr_nkkmr4ZzQA1uo61smo1_500.gif');
+
+});
+
+
+
 // #coffee, #whoops
 controller.hears(['#coffee', '#whoops'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
