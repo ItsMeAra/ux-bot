@@ -731,6 +731,7 @@ controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,messa
 });
 
 controller.hears(['#bothelp', '#bothelp-long'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    // TODO: Add help to each keyword
     var feed = '';
     var botResponse = bot.botkit.allKeywords;
     var _response = '```';
