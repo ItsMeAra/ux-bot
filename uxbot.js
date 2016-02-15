@@ -720,10 +720,10 @@ controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,messa
 
 });
 
-controller.hears(['#bothelp', '#bothelp-detail'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+controller.hears(['#bothelp', '#bothelp-long'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
     // console.log('message:', message.text);
     var feed = '';
-    if( message.text == '#bothelp-detail'){
+    if( message.text == '#bothelp-long'){
         feed = '\n';
     }
     var botResponse = bot.botkit.allKeywords;
