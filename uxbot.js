@@ -721,16 +721,18 @@ controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,messa
 });
 
 controller.hears(['#bothelp', '#bothelp-long'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-    // console.log('message:', message.text);
     var feed = '';
+    var botResponse = bot.botkit.allKeywords;
+    var _response = '```';
+
     if( message.text == '#bothelp-long'){
         feed = '\n';
     }
-    var botResponse = bot.botkit.allKeywords;
-    var _response = '```';
+
     for(k in botResponse){
         _response += k + '  ' + feed;
     }
+
     _response += '```';
     bot.reply(message, _response );
 });
