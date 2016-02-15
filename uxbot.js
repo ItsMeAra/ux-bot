@@ -22,9 +22,9 @@
 
 # Run the bot from the command line:
 
-    node uxbot.js
-
-    Currently, the bot lives on EK's machine. The goal is to move it to the UX office Mac Mini, or a web-facing server, so it can always run, even when EK's computer is off.
+    node uxbot.js (for manual restarts/updates)
+    OR
+    nodemon uxbot.js (for automatic restarts/updates)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
