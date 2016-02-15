@@ -238,7 +238,7 @@ controller.hears(['#devbox','#devboxes'],'direct_message,direct_mention,mention,
 
 
 // #fatigued
-controller.hears(['#fatigued'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+controller.hears(['#fatigued', '#fatigado'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
     bot.reply(message,'http://new.tinygrab.com/219da34c65fb5ffb028e32a00d430b318c38a5ca70.jpg');
 
@@ -718,4 +718,19 @@ controller.hears(['#biketime (.*)'],'direct_message,direct_mention,mention,messa
 
     request.send();
 
+});
+
+controller.hears(['#bothelp', '#bothelp-detail'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    // console.log('message:', message.text);
+    var feed = '';
+    if( message.text == '#bothelp-detail'){
+        feed = '\n';
+    }
+    var botResponse = bot.botkit.allKeywords;
+    var _response = '```';
+    for(k in botResponse){
+        _response += k + '  ' + feed;
+    }
+    _response += '```';
+    bot.reply(message, _response );
 });
