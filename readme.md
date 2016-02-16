@@ -149,3 +149,9 @@ Tells you your commute time
 #walktime {address}
 #biketime {address}
 ```
+
+See all the commands by asking UX-Bot nicely
+
+```bash
+#bothelp
+```
