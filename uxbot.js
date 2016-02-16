@@ -389,7 +389,7 @@ controller.hears(['#shakeitoff'],'direct_message,direct_mention,mention,message_
 
 
 // #shotsfired
-controller.hears(['#disgust'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+controller.hears(['#shotsfired'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
     var responses = [
         'http://ara-vision.com/gif-library/favorites/shots-fired-compilation.gif',
         'https://localtvwnep.files.wordpress.com/2012/12/shots_fired.jpg'
