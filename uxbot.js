@@ -343,6 +343,15 @@ controller.hears(['#ravenous'],'direct_message,direct_mention,mention,message_re
 
 
 
+// #ripvinson
+controller.hears(['#ripvinson'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'https://www.youtube.com/watch?v=o4T_miEDCMQ&feature=youtu.be');
+
+});
+
+
+
 // #sadtrombone, #wompwomp
 controller.hears(['#sadtrombone','#wompwomp'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
@@ -490,6 +499,8 @@ controller.hears(['#tgif'],'direct_message,direct_mention,mention,message_receiv
 
 });
 
+
+
 // #tigerwoods
 controller.hears(['#tigerwoods'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
 
@@ -543,8 +554,7 @@ controller.hears(['#drivetime (.*)'],'direct_message,direct_mention,mention,mess
     var destinationAddress = inputAddress[1];
     var encodedDestinationAddress = encodeURIComponent(destinationAddress);
 
-    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
-    // var apiUrlPessimistic = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=pessimistic&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
+    var apiUrl = 'https://maps.googleapis.com/maps/api/directions/json?departure_time=now&traffic_model=best_guess&c&origin='+ mtAddress +'&destination='+ encodedDestinationAddress +'&key=AIzaSyBjVGPCTLOZvRJfecKKu69n7_WGajNJVTY';
     var googleMapsUrl = 'https://www.google.com/maps/dir/'+ mtAddress +'/'+ encodedDestinationAddress;
 
     var request = new XMLHttpRequest();
