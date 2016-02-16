@@ -386,6 +386,13 @@ controller.hears(['#shotsfired'],'direct_message,direct_mention,mention,message_
 
 });
 
+// #hacked
+controller.hears(['#hacked'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'http://i.imgur.com/ye5udHZ.gif');
+
+});
+
 
 
 // #stabbed
