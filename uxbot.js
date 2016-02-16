@@ -389,9 +389,21 @@ controller.hears(['#shakeitoff'],'direct_message,direct_mention,mention,message_
 
 
 // #shotsfired
-controller.hears(['#shotsfired'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+controller.hears(['#disgust'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    var responses = [
+        'http://ara-vision.com/gif-library/favorites/shots-fired-compilation.gif',
+        'https://localtvwnep.files.wordpress.com/2012/12/shots_fired.jpg'
+    ];
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+    bot.reply(message, botResponse);
+});
 
-    bot.reply(message,'https://localtvwnep.files.wordpress.com/2012/12/shots_fired.jpg');
+
+
+// #hacked
+controller.hears(['#hacked'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+
+    bot.reply(message,'http://i.imgur.com/ye5udHZ.gif');
 
 });
 
@@ -411,7 +423,10 @@ controller.hears(['#stress'],'direct_message,direct_mention,mention,message_rece
 
     var responses = Array(
         'http://union.io/images/repo/20160204-00--b17773.png',
-        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg'
+        'http://38.media.tumblr.com/d04494b57e344367e55bbc2fd357f6fa/tumblr_n9b5pyRSQm1rwt6qvo3_400.jpg',
+        'http://ara-vision.com/gif-library/angry/smash-phone.gif',
+        'http://ara-vision.com/gif-library/angry/robin-doesnt-work.gif',
+        'http://ara-vision.com/gif-library/angry/stick-fuuuu.gif'
     );
 
     var botResponse = responses[Math.floor(Math.random()*responses.length)];
@@ -541,6 +556,74 @@ controller.hears(['#tripleboost'],'direct_message,direct_mention,mention,message
     bot.reply(message,'http://i.imgur.com/IC1Ad7g.gif');
 
 });
+
+
+
+// #idgaf
+controller.hears(['#idgaf'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    var responses = [
+        'http://ara-vision.com/gif-library/idgaf/idgaf-dance.gif',
+        'http://ara-vision.com/gif-library/idgaf/looking-for-f-to-give.gif',
+        'http://ara-vision.com/gif-library/idgaf/scarface-idgaf.gif',
+        'http://ara-vision.com/gif-library/idgaf/smokey-idgaf.gif'
+    ];
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+    bot.reply(message, botResponse);
+});
+
+
+
+// #mindblown
+controller.hears(['#mindblown'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    var responses = [
+        'http://ara-vision.com/gif-library/mind-blown/kramer-mind-blown.gif',
+        'http://ara-vision.com/gif-library/mind-blown/magic.gif',
+        'http://ara-vision.com/gif-library/mind-blown/mind-blown-2.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-shocked-2.gif',
+        'http://ara-vision.com/gif-library/mind-blown/mind-blown.gif'
+    ];
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+    bot.reply(message, botResponse);
+});
+
+
+
+// #disgust
+controller.hears(['#disgust'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    var responses = [
+        'http://ara-vision.com/gif-library/disgust/gangsta-what-the.gif',
+        'http://ara-vision.com/gif-library/disgust/disgust.gif',
+        'http://ara-vision.com/gif-library/disgust/disgust-jony-depp.gif'
+    ];
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+    bot.reply(message, botResponse);
+});
+
+
+
+// #seinfeld
+controller.hears(['#seinfeld'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
+    var responses = [
+        'http://ara-vision.com/gif-library/seinfeld/george-costanza.gif',
+        'http://ara-vision.com/gif-library/seinfeld/george-shocked.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-eat-in-bed.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-fall.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-mind-blown.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-shocked-2.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-shocked.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-snow-face.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-surprise.gif',
+        'http://ara-vision.com/gif-library/seinfeld/Kramer-whaaa.gif',
+        'http://ara-vision.com/gif-library/seinfeld/seinfeld-had-enough.gif',
+        'http://ara-vision.com/gif-library/seinfeld/seinfeld-shocked.gif',
+        'http://ara-vision.com/gif-library/seinfeld/kramer-thats-true.gif'
+    ];
+    var botResponse = responses[Math.floor(Math.random()*responses.length)];
+    bot.reply(message, botResponse);
+});
+
+
+
 
 
 /* More Complicated Shit
