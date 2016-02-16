@@ -565,7 +565,9 @@ controller.hears(['#idgaf'],'direct_message,direct_mention,mention,message_recei
         'http://ara-vision.com/gif-library/idgaf/idgaf-dance.gif',
         'http://ara-vision.com/gif-library/idgaf/looking-for-f-to-give.gif',
         'http://ara-vision.com/gif-library/idgaf/scarface-idgaf.gif',
-        'http://ara-vision.com/gif-library/idgaf/smokey-idgaf.gif'
+        'http://ara-vision.com/gif-library/idgaf/smokey-idgaf.gif',
+        'https://media.giphy.com/media/JEJYvwfHmBlgQ/giphy.gif',
+        'https://vine.co/v/OAEZLKjjM0D'
     ];
     var botResponse = responses[Math.floor(Math.random()*responses.length)];
     bot.reply(message, botResponse);
