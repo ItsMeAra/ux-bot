@@ -217,7 +217,8 @@ botReply(['#devbox','#devboxes'], [
 ]);
 
 botReply(['#fatigued', '#fatigado'], [
-    'http://new.tinygrab.com/219da34c65fb5ffb028e32a00d430b318c38a5ca70.jpg'
+    'http://new.tinygrab.com/219da34c65fb5ffb028e32a00d430b318c38a5ca70.jpg', 
+    'http://gph.is/1gVrqmL'
 ]);
 
 botReply(['#fts'], [
@@ -270,7 +271,8 @@ botReply(['#savage'], [
 ]);
 
 botReply(['#serenitynow'], [
-    'http://ofmindsandmotorcycles.com/wp-content/uploads/2015/02/serenity.jpeg'
+    'http://ofmindsandmotorcycles.com/wp-content/uploads/2015/02/serenity.jpeg', 
+    'http://gph.is/15vF1rk'
 ]);
 
 botReply(['#shakeitoff'], [
@@ -351,7 +353,9 @@ botReply(['#tigerwoods'], [
 
 botReply(['#topperformer'], [
     'http://union.io/images/repo/20150917-00--a1bd5f.jpg',
-    'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg'
+    'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg',
+    'http://www.automaxrecruitingandtraining.com/wp-content/uploads/2012/02/top-industry-performer.jpg',
+    'http://idgresearch.com/wp-content/uploads/2015/02/Top-Performer.png'
 ]);
 
 botReply(['#trashthelogo'], [
@@ -385,6 +389,11 @@ botReply(['#disgust'], [
     'http://ara-vision.com/gif-library/disgust/disgust-jony-depp.gif'
 ]);
 
+botReply(['#wasted'], [
+    'http://gph.is/1fly6c8',
+    'http://gph.is/1cVkBQk'
+]);
+
 botReply(['#seinfeld'], [
     'http://ara-vision.com/gif-library/seinfeld/george-costanza.gif',
     'http://ara-vision.com/gif-library/seinfeld/george-shocked.gif',
@@ -398,7 +407,11 @@ botReply(['#seinfeld'], [
     'http://ara-vision.com/gif-library/seinfeld/Kramer-whaaa.gif',
     'http://ara-vision.com/gif-library/seinfeld/seinfeld-had-enough.gif',
     'http://ara-vision.com/gif-library/seinfeld/seinfeld-shocked.gif',
-    'http://ara-vision.com/gif-library/seinfeld/kramer-thats-true.gif'
+    'http://ara-vision.com/gif-library/seinfeld/kramer-thats-true.gif',
+    'http://gph.is/1KET6Fd',
+    'http://gph.is/1emYn4u',
+    'http://gph.is/1c35BPv',
+    'http://gph.is/1a5EPor'
 ]);
 
 
