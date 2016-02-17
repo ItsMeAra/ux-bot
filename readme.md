@@ -68,12 +68,9 @@ It's easy to create a new call & response - simply replace the KEYWORD and the R
 
 ```javascript
 
-// KEYWORD
-controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-
-    bot.reply(message,'RESPONSE');
-
-});
+botReply(['#KEYWORD'], [
+    'RESPONSE 1'
+]);
 
 ```
 
@@ -81,12 +78,9 @@ You can also have multiple keywords call the same response.
 
 ```javascript
 
-// KEYWORD
-controller.hears(['KEYWORD1','KEYWORD2','KEYWORD3'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-
-    bot.reply(message,'RESPONSE');
-
-});
+botReply(['#KEYWORD', 'KEYWORD2'], [
+    'RESPONSE 1'
+]);
 
 ```
 
@@ -94,22 +88,11 @@ Want to pull a random response from a list? Cool. You can.
 
 ```javascript
 
-// KEYWORD
-controller.hears(['KEYWORD'],'direct_message,direct_mention,mention,message_received,ambient',function(bot, message) {
-
-    var responses = Array(
-        'RANDOM-RESPONSE-A',
-        'RANDOM-RESPONSE-B',
-        'RANDOM-RESPONSE-C',
-        'RANDOM-RESPONSE-D',
-        'RANDOM-RESPONSE-E'
-    );
-
-    var botResponse = responses[Math.floor(Math.random()*responses.length)];
-
-    bot.reply(message, botResponse);
-
-});
+botReply(['#KEYWORD'], [
+    'RESPONSE 1',
+    'RESPONSE 2',
+    'RESPONSE 3'
+]);
 
 ```
 

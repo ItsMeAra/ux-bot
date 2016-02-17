@@ -355,7 +355,8 @@ botReply(['#topperformer'], [
     'http://union.io/images/repo/20150917-00--a1bd5f.jpg',
     'http://www.bytecolumn.com/wp-content/uploads/2011/08/business-success-crop.jpg',
     'http://www.automaxrecruitingandtraining.com/wp-content/uploads/2012/02/top-industry-performer.jpg',
-    'http://idgresearch.com/wp-content/uploads/2015/02/Top-Performer.png'
+    'http://idgresearch.com/wp-content/uploads/2015/02/Top-Performer.png',
+    'http://staffingadvisors.com/wp-content/uploads/2014/10/iStock_000009738389Large-1170x712.jpg'
 ]);
 
 botReply(['#trashthelogo'], [
